@@ -10,13 +10,16 @@ total_cost = float(input("Enter the cost of your dream home: "))
 
 
 monthly_salary = (annual_salary/12)
-interest = (current_savings*r/12)
+interest = (monthly_salary*r)
 deposit = (total_cost/portion_deposit)
-semi_annual_raise = (semi_annual_raise*2)
 
 
 while current_savings < deposit:
-    current_savings+=(monthly_salary+interest)
-    current_savings+=(monthly_salary+interest+semi_annual_raise)
-    months=months+1
+    if months != 0 and months % 6 == 0:
+        current_savings += (monthly_salary) + (interest)
+        current_savings += (monthly_salary) + (monthly_salary*semi_annual_raise)
+        months += 1
+    else:
+         current_savings+=(monthly_salary) + (interest)
+         months=months+1
 print("Number of months: " , months)
