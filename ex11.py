@@ -1,15 +1,17 @@
+
 from random import randint
 
-low = 0
-high = 100
-guess = input()
+guess = int(input())
 guesses = 0
+
+
 
 def random_number(low,high):
     return randint
 print("Enter your guess from numbers 1 to 100: ")
 guess = int(input())
 guesses = 0
+
 while guess != random_number:
     if guess < random_number:
         print("Higher")
@@ -19,7 +21,4 @@ while guess != random_number:
         print("You got it! It took you ", guesses + "guesse/s")
     guesses+=1
 
-
-
-
-
+random_number(1,100)
