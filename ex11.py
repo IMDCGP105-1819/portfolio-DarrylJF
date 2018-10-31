@@ -2,19 +2,24 @@ from random import randint
 
 low = 0
 high = 100
-guesses=0
-number = randint(low,high)
 guess = input()
+guesses = 0
 
-def random_number():
-    int(input("Guess a number between 1 and 100: "))
-while guess != number:
-    if guess < number:
+def random_number(low,high):
+    return randint
+print("Enter your guess from numbers 1 to 100: ")
+guess = int(input())
+guesses = 0
+while guess != random_number:
+    if guess < random_number:
         print("Higher")
-    elif guess > number:
+    elif guess > random_number:
         print("Lower")
     else:
-        print("You got it! It took you", guesses, "guesse/s...")
+        print("You got it! It took you ", guesses + "guesse/s")
     guesses+=1
-    
-random_number()
+
+
+
+
+
