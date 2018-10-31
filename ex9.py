@@ -16,17 +16,17 @@ interest = annual_salary*r
 
 
 epsilon=100
-high, low = 1, 0
-guess=(high+low) / 2
+high, low = 10000, 0
+guess=round((high+low)/2,2)
 steps=0
 
 
-while current_savings <= down_payment + epsilon and current_savings >= down_payment - epsilon: 
+while abs(current_savings <= down_payment + epsilon) and abs(current_savings >= down_payment - epsilon): 
        for i in range(1, months_to_save+1): 
            current_savings += monthly_salary 
            current_savings += interest/12
            months +=1 
-           if months % 6==0: 
+           if months % 6==0:
                current_savings += * semi_annual_return 
                months +=1 
        if current_savings < down_payment + epsilon or current_savings < down_payment - epsilon: 
@@ -40,8 +40,11 @@ while current_savings <= down_payment + epsilon and current_savings >= down_paym
            months+=1
            if months % 6==0:
                current_savings += * semi_annual_return
-               
-             
-
-
-
+       if   current_savings < down_payment:
+           low = guess
+       else:
+           high = guess
+           guess = guess/10000
+           steps +=1
+           print("Best savings rate: ", round(guess,2))
+           print("Steps in bisection: ", steps) 
